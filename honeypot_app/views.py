@@ -52,7 +52,7 @@ def addHoneypot(request):
     ## create honeypot
     pidFilename = f"{re.sub('[^0-9]', '', request['honeypotIP'])}_{request['honeypotType'].lower()}.pid"
     pidFilepath = os.path.join(BASE_DIR, f'process_ids/{pidFilename}')
-    cmd = f"sudo twistd -y honeypot_app/honeypot_manager/createHoneypot.py --pidfile {pidFilepath}"
+    cmd = f"twistd -y honeypot_app/honeypot_manager/createHoneypot.py --pidfile {pidFilepath}"
     subprocess.run(cmd.split())
 
     return HttpResponse("Done")
@@ -77,7 +77,7 @@ def removeHoneypot(request):
     pid = (subprocess.check_output(cmd.split())).decode('utf-8')
 
     ## kill process
-    cmd = f"sudo kill {pid}"
+    cmd = f"sudo kill -9 {pid}"
     subprocess.run(cmd.split())
 
     return HttpResponse("Done")
