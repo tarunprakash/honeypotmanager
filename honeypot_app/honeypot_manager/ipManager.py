@@ -8,7 +8,7 @@ import re
 def addIp(addr):
     if sys.platform == 'darwin': ## macOS
         add_ip_macos(addr)
-    elif sys.platform == 'linux2': ## linux
+    elif 'linux' in sys.platform: ## linux
         add_ip_linux(addr)
     else:
         raise Exception(f"Invalid platform")
@@ -16,7 +16,7 @@ def addIp(addr):
 def removeIp(addr):
     if sys.platform == 'darwin': ## macOS
         remove_ip_macos(addr)
-    elif sys.platform == 'linux2': ## linux
+    elif 'linux' in sys.platform: ## linux
         remove_ip_linux(addr)
     else:
         raise Exception(f"Invalid platform")
