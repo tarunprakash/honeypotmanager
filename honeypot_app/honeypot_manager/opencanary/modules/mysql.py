@@ -158,12 +158,12 @@ class SQLFactory(Factory):
 class CanaryMySQL(CanaryService):
     NAME = 'mysql'
 
-    def __init__(self, config=None, logger=None):
+    def __init__(self, listen_addr='', config=None, logger=None):
         CanaryService.__init__(self, config=config, logger=logger)
         self.port = int(config.getVal("mysql.port", default=3306))
         self.banner = config.getVal("mysql.banner", default="5.5.43-0ubuntu0.14.04.1").encode()
         self.logtype = logger.LOG_MYSQL_LOGIN_ATTEMPT
-        self.listen_addr = config.getVal('device.listen_addr', default='')
+        self.listen_addr = listen_addr
         if re.search('^[3456]\.[-_~.+\w]+$', self.banner.decode()) is None:
             raise ConfigException("sql.banner", "Invalid MySQL Banner")
 

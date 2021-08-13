@@ -27,6 +27,7 @@ def index(request):
 
     context = {
         "honeypots": Honeypot.objects.all(),
+        "honeypotTypes": Honeypot._meta.get_field('honeypotType').choices, 
         "logs": log
     } 
 

@@ -14,6 +14,8 @@ from opencanary.logger import getLogger
 
 from opencanary.modules.ftp import CanaryFTP
 from opencanary.modules.ssh import CanarySSH
+from opencanary.modules.http import CanaryHTTP
+from opencanary.modules.mysql import CanaryMySQL
 
 import traceback
 import ipManager
@@ -21,7 +23,9 @@ import ipManager
 class HoneypotFactory:
     honeypotClasses = {
         'FTP': CanaryFTP,
-        'SSH': CanarySSH
+        'SSH': CanarySSH,
+        'HTTP': CanaryHTTP,
+        'MySQL': CanaryMySQL
     }
 
     def __init__(self, application):

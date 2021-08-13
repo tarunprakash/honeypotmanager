@@ -90,8 +90,9 @@
                             </div>
                             <div class='col'>
                                 <select class='form-control' name='honeypotType' required>
-                                    <option>FTP</option>
-                                    <option>SSH</option>
+                                    {% for type in honeypotTypes %}
+                                    <option>{{type.0}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
