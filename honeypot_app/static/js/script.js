@@ -44,7 +44,7 @@ $('#deleteConfirmModal').on('show.bs.modal', function (event) { // show delete c
 });
 
 
-let socket = new WebSocket(`ws://${location.host}:8000/log`);
+let socket = new WebSocket(`ws://${location.host}/log`);
 
 socket.onmessage = function(event) {
     refreshPage();
