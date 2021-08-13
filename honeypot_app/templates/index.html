@@ -47,14 +47,15 @@
             </table>
         </div>
 
-        <div class='container-fluid py-5' id='alertContainer' style='max-width:1000px;'>
+        <div class='container-fluid py-5' id='alertContainer' style='max-width:1200px;'>
             <h2 class='display-4 py-2' style='text-align:center;'>Honeypot Alerts</h2>
             
             <table class='table'>
                 <thead>
                     <tr>
                         <th>Type</th>
-                        <th>IP</th>
+                        <th>Trap IP</th>
+                        <th>Attacker IP</th>
                         <th>Time</th>
                         <th>Message</th>
                     </tr>
@@ -63,6 +64,7 @@
                     {% for log in logs %}
                     <tr>
                         <td>{{log.logtype_msg}}</td>
+                        <td>{{log.dst_host}}</td>
                         <td>{{log.src_host}}</td>
                         <td>{{log.local_time_adjusted}}</td>
                         <td>{{log.logdata}}</td>
